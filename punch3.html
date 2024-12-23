@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blogsiteXP</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #272c1d;
+            color: #fff;
+        }
+
+        .header {
+            background-color: #363c28;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #182334;
+        }
+
+        .header img {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+        }
+
+        .header .site-name {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .header .xp {
+            color: #ff4242;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 110px);
+            padding: 10px;
+        }
+
+        .menu-bar {
+            width: 20%;
+            background-color: #182334;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 2px solid #363c28;
+        }
+
+        .menu-bar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .menu-bar ul li {
+            margin: 0;
+            padding: 15px;
+            background-color: #272c1d;
+            border: 1px solid #363c28;
+            cursor: pointer;
+            color: #3fcf86;
+            position: relative;
+        }
+
+        .menu-bar ul li.active {
+            background-color: #363c28;
+        }
+
+        .menu-bar ul li:before {
+            content: none;
+        }
+
+        .menu-bar ul li.active:before {
+            content: "> ";
+            color: #f9b61b;
+            position: absolute;
+            left: 10px;
+        }
+
+        .menu-bar ul li:hover:before {
+            content: "> ";
+            color: #3fcf86;
+            position: absolute;
+            left: 10px;
+        }
+
+        .menu-bar ul li:hover {
+            background-color: #363c28;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: #182334;
+            border: 2px solid #363c28;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            position: relative;
+        }
+
+        .main-content .left-pane {
+            flex: 2;
+            background-image: url('yeni çerçeve.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .main-content .left-pane .content-area {
+            background-color: transparent;
+			width: calc(100% - 10px);
+			max-width: 90%;
+            width: 100%;
+            height: 85%;
+            padding: 30px;
+			padding-bottom: 45px;
+			margin-right: 60px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            color: #3fcf86;
+            position: absolute;
+            top: 70x;
+            left: 60;
+			clip-path: inset(35px 0 5px 0);
+        }
+		
+.main-content .left-pane .content-area::-webkit-scrollbar {
+    width: 0px; /* Scrollbar genişliği */
+}
+
+.main-content .left-pane .content-area::-webkit-scrollbar {
+    width: 0px; /* Scrollbar genişliği */
+    position: absolute; /* Scrollbar'ın pozisyonunu düzelt */
+}
+
+/* Scrollbar çubuğunun tasarımı */
+.main-content .left-pane .content-area::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Scrollbar çubuğu rengi */
+    border-radius: 0px; /* Kenarları yuvarlat */
+    margin: 10px 0; /* Yukarıdan ve aşağıdan boşluk bırak */
+}
+
+/* Scrollbar arka planı */
+.main-content .left-pane .content-area::-webkit-scrollbar-track {
+    background-color: transparent; /* Görünmez arka plan */
+}
+
+/* Scrollbar sağdan boşluk bırakma */
+.main-content .left-pane {
+    padding-right: 15px; /* Sağda içerik ve scrollbar için alan bırak */
+}
+
+
+        .main-content .right-pane {
+            flex: 1;
+            background-color: #272c1d;
+            border: 2px solid #363c28;
+            padding: 10px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .right-pane .back-icon {
+    display: block; /* Her zaman görünür yap */
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #f9b61b;
+    z-index: 100;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.right-pane .back-icon:hover {
+    transform: scale(1.2); /* Şık büyüme efekti */
+    color: #ffd700; /* Altın sarısı renk */
+}
+
+        .right-pane .back-icon:hover {
+            transform: scale(1.2); /* Şık büyüme efekti */
+            color: #ffd700; /* Altın sarısı renk */
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #272c1d;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 2px solid #363c28;
+            text-align: center;
+        }
+
+        .sidebar img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .sidebar p {
+            margin: 10px 0 0;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+            color: #3fcf86;
+        }
+
+        .footer {
+            background-color: #ff4242;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #182334;
+        }
+
+        .sidebar .announcement {
+            margin-top: 15px;
+            text-align: center;
+            color: #3fcf86;
+        }
+
+        .sidebar .announcement img {
+            width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+		
+		.content-area::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 6%;
+    width: 93%;
+    height: 2px;
+    background: rgba(0, 128, 0, 0.9); /* Daha opak koyu yeşil */
+    animation: scan-line 30s linear infinite; /* Toplam döngü süresi: 20 saniye */
+    z-index: 1;
+}
+
+@keyframes scan-line {
+    0% {
+        top: -10%; /* Çizgi yukarıda */
+    }
+    25% {
+        top: 280%; /* Çizgi aşağı iner */
+    }
+    100% {
+        top: 280%; /* Çizgi aşağıda bekler */
+    }
+}
+
+
+
+    </style>
+<script>
+    let backStepCount = 0; // Geri tuşunun kaç kez tıklandığını takip eden değişken
+	
+    window.onload = function () {
+    const contentArea = document.querySelector('.content-area');
+    contentArea.innerHTML = `
+        <div class="main-image" style="padding: 20px; margin: 10px; box-sizing: border-box;">
+            <img src="work-in-progress.png" alt="Work in Progress" style="max-width: 90%; border-radius: 10px; display: block; margin: 0 auto;">
+            <p style="text-align: left; color: #fff; font-size: 15px; margin-top: 20px;">
+                Sadece Amme Hizmeti menüsü işler vaziyette şu an için
+            </p>
+        </div>
+    `;
+};
+
+
+    function activateMenu(menuItem) {
+        const menuItems = document.querySelectorAll('.menu-bar ul li');
+        menuItems.forEach(item => item.classList.remove('active'));
+        menuItem.classList.add('active');
+
+        const menuText = menuItem.textContent.trim();
+        const contentArea = document.querySelector('.content-area');
+        const backButton = document.querySelector('.back-icon');
+        const rightPane = document.querySelector('.right-pane');
+
+        if (menuText === "Amme Hizmeti") {
+            contentArea.innerHTML = `
+                <p onclick="showDetails()" style="cursor: pointer; color: #3fcf86;">> Swelter Türkçe Yama</p>
+            `;
+            rightPane.innerHTML = ""; // Sağ paneli temizliyoruz
+            backButton.style.display = 'none';
+            backStepCount = 0; // Geri tuşunu sıfırlıyoruz
+        } else {
+            contentArea.innerHTML = '';
+            backButton.style.display = 'none';
+            rightPane.innerHTML = ""; // Sağ paneli temizliyoruz
+        }
+    }
+
+    function showDetails() {
+        const contentArea = document.querySelector('.content-area');
+        const rightPane = document.querySelector('.right-pane');
+
+        contentArea.innerHTML = `
+            <h2>Swelter Türkçe Yama</h2>
+            <img src="swelter-cover.png" alt="Swelter Görseli" style="width: 100%; border-radius: 5px;">
+            <p>Swelter kişisel favorilerimden olan bir Half-Life 2 modu. If you ask me kimilerine göre gelmiş geçmiş en iyi HL modu olan Entropy Zero'dan önde benim için. No offense.</p>
+            <p>Hikayesine daha bi' hakim olarak oynamak niyetindeysiniz boş zamanımda hazırlamış olduğum bu altyazıyla oyunu oynamanızı tavsiye ederim.</p>
+            <p>Kurulumu: Rar içindeki dosyaları Steam-steamapps-common-Swelter-Swelter-resource klasörüne çıkarınız. Sonrasında dosya değişimine onay veriniz. Orijinal İngilizce alt yazılarının üzerine hazırlanmış bir altyazı. Galiba altyazıları açmanız için oyunu başlattıktan sonra esc yapıp mod ayarlarından İngilizce altyazıyı seçerseniz altyazılar oyun içersinde açılıyor, ana menüden değil. İyi oyunlar dilerim.</p>
+            <p>Ha bir de mevzudan hiç haberi olmayanlar için mod eğer Half-Life 2'ye Steam üzerinden sahipseniz ücretsiz bir biçimde Steam'de bulunuyor. Modu kurmak için Half-Life 2'yi yüklemenize gerek yok.</p>
+        `;
+
+        // Sağ panelde indirme bağlantısı ve geri gelme tuşu
+        rightPane.innerHTML = `
+            <span class="back-icon" onclick="goBack()">&lt;</span>
+            <h3>İndirme Bağlantısı:</h3>
+            <a href="https://drive.google.com/file/d/1O3XqwRM-RKAZ1mZi_j4xibM0IfZiidZ6/view?usp=sharing" target="_blank" style="color: #3fcf86;">Swelter Türkçe Yama İndir</a>
+        `;
+
+        const backButton = document.querySelector('.back-icon');
+        backButton.style.display = 'block'; // Geri tuşunu görünür yap
+        backStepCount = 1; // Geri tuşunu birinci aşamaya ayarla
+    }
+
+    function goBack() {
+    const contentArea = document.querySelector('.content-area');
+    const rightPane = document.querySelector('.right-pane');
+
+    // İlk geri basıldığında içerik temizlenir
+    if (contentArea.innerHTML !== '') {
+        contentArea.innerHTML = ''; // Sol paneli temizle
+        rightPane.innerHTML = `
+            <span class="back-icon" onclick="goBack()">&lt;</span>
+            
+        `;
+    } else {
+        // İkinci geri basıldığında her şey temizlenir
+        const menuItems = document.querySelectorAll('.menu-bar ul li');
+        menuItems.forEach(item => item.classList.remove('active')); // Menü seçimlerini kaldır
+        rightPane.innerHTML = `
+            <span class="back-icon" onclick="goBack()">&lt;</span>
+            
+        `;
+    }
+}
+
+</script>
+
+
+</head>
+<body>
+    <div class="header">
+        <img src="shepard.png" alt="Shepard">
+        <div class="site-name">blogsite<span class="xp">XP</span></div>
+    </div>
+    <div class="container">
+        <div class="menu-bar">
+            <ul>
+                <li onclick="activateMenu(this)">Amme Hizmeti</li>
+                <li onclick="activateMenu(this)">Günce/l</li>
+                <li onclick="activateMenu(this)">Chat</li>
+                <li onclick="activateMenu(this)">İletişim</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="left-pane">
+                <div class="content-area"></div>
+            </div>
+            <div class="right-pane">
+                <span class="back-icon" onclick="goBack()">&lt;</span>
+               
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="announcement">
+                <img src="portal reklamı.png" alt="Portal Çizgi Roman">
+                <p>Türkçe Çizgi Roman Çevirisi Pek Yakında!</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        © 2024 blogsiteXP Minimum Viable Product
+    </div>
+</body>
+
+
+</html>
